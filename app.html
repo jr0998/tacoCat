@@ -62,7 +62,7 @@
                     <h4 class="lead">Enter string into the input and press the button.
                         if it is a palindrome then a green box will apear with a success message.
                         If what was entered was not a palindrom a red box will appear saying to try
-                        again as what was entered was not
+                        again as what was entered was not.
                     </h4>
                 </div>
                 <div class="col">
@@ -77,8 +77,10 @@
                                 <div class="col-12">
                                     <button type="button" id="btnSubmit" class="btn btn-primary ">Check</button>
                                 </div>
-                                <div class="alert alert-success mt-5 invisible" id="alert" role="alert">
-                                    <h4 class="heading" id="heading">Well Done</h4>
+                                <div class="alert alert-danger mt-5 invisible" id="alert" role="alert">
+                                    <p class="heading fw-bolder" id="statement">
+
+                                    </p>
                                     <hr>
                                     <p class="mb-0" id="msg">
                                         <!-- Insert Message Here -->
@@ -116,7 +118,9 @@
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
     </script>
     <script src="/js/site.js"></script>
-
+    <script>
+        document.getElementById("btnSubmit").addEventListener("click", getString);
+    </script>
 </body>
 
 </html>
