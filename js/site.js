@@ -1,22 +1,22 @@
 function getString() {
     document.getElementById("alert").classList.add("invisible");
-    let testStr = [];
+    let revStr = [];
     let str = document.getElementById("stringInput").value;
-    testStr = reverseStr(str);
+    revStr = reverseStr(str);
     str = composeString(str);
-    testStr = composeString(testStr);
-    let check = checkPal(str, testStr);
+    revStr = composeString(revStr);
+    let check = checkPal(str, revStr);
 
-    displayMessage(check, str, testStr);
+    displayMessage(check, str, revStr);
 
 }
 
 function reverseStr(str) {
-    let testStr = [];
+    let revStr = [];
     for (let i = str.length - 1; i >= 0; i--) {
-        testStr += str[i];
+        revStr += str[i];
     }
-    return testStr;
+    return revStr;
 }
 
 function composeString(str) {
@@ -24,29 +24,29 @@ function composeString(str) {
     return str;
 }
 
-function checkPal(str, testStr) {
+function checkPal(str, revStr) {
     let check = true;
 
     for (let i = 0; i < str.length; i++) {
-        if (str[i].toLowerCase != testStr[i].toLowerCase) {
+        if (str[i].toLowerCase != revStr[i].toLowerCase) {
             check = false;
         }
     }
     return check;
 }
 
-function displayMessage(check, str, testStr) {
+function displayMessage(check, str, revStr) {
     if (!check) {
         document.getElementById("alert").classList.remove("alert-success");
         document.getElementById("alert").classList.add("alert-danger");
         document.getElementById("statement").innerText = "Not Plaidrome";
-        document.getElementById("msg").innerHTML = `String Normal: ${str}<br> String reversed: ${testStr}`;
+        document.getElementById("msg").innerHTML = `String Normal: ${str}<br> String reversed: ${revStr}`;
         document.getElementById("alert").classList.remove("invisible");
     } else {
         document.getElementById("alert").classList.remove("alert-danger");
         document.getElementById("alert").classList.add("alert-success");
         document.getElementById("statement").innerText = "Plaidrome";
-        document.getElementById("msg").innerHTML = `String Normal: ${str} <br> String reversed: ${testStr}`;
+        document.getElementById("msg").innerHTML = `String Normal: ${str} <br> String reversed: ${revStr}`;
         document.getElementById("alert").classList.remove("invisible");
 
     }

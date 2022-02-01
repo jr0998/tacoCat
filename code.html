@@ -57,43 +57,53 @@
                     <pre class="line-numbers"> <code class="language-javascript">
                         function getString() {
                             document.getElementById("alert").classList.add("invisible");
-                        
+                            let revStr = [];
                             let str = document.getElementById("stringInput").value;
+                            revStr = reverseStr(str);
+                            str = composeString(str);
+                            revStr = composeString(revStr);
+                            let check = checkPal(str, revStr);
                         
-                            str = checkPal(str);
-                        
-                            displayMessage(str);
+                            displayMessage(check, str, revStr);
                         
                         }
                         
-                        function checkPal(str) {
+                        function reverseStr(str) {
+                            let revStr = [];
+                            for (let i = str.length - 1; i >= 0; i--) {
+                                revStr += str[i];
+                            }
+                            return revStr;
+                        }
+                        
+                        function composeString(str) {
                             str = str.replace(/\s/g, '');
                             return str;
                         }
                         
-                        function displayMessage(str) {
-                            let testStr = [];
+                        function checkPal(str, revStr) {
                             let check = true;
-                            for (let i = str.length - 1; i >= 0; i--) {
-                                testStr += str[i];
-                            }
                         
                             for (let i = 0; i < str.length; i++) {
-                                if (str[i].toLowerCase() != testStr[i].toLowerCase()) {
+                                if (str[i].toLowerCase != revStr[i].toLowerCase) {
                                     check = false;
                                 }
                             }
+                            return check;
+                        }
+                        
+                        function displayMessage(check, str, revStr) {
                             if (!check) {
                                 document.getElementById("alert").classList.remove("alert-success");
                                 document.getElementById("alert").classList.add("alert-danger");
                                 document.getElementById("statement").innerText = "Not Plaidrome";
-                                document.getElementById("msg").innerHTML = `String Normal: ${str}<br> String reversed: ${testStr}`;
+                                document.getElementById("msg").innerHTML = `String Normal: ${str}<br> String reversed: ${revStr}`;
                                 document.getElementById("alert").classList.remove("invisible");
                             } else {
                                 document.getElementById("alert").classList.remove("alert-danger");
                                 document.getElementById("alert").classList.add("alert-success");
                                 document.getElementById("statement").innerText = "Plaidrome";
-                                document.getElementById("msg").innerHTML = `String Normal: ${str} <br> String reversed: ${testStr}`;
+                                document.getElementById("msg").innerHTML = `String Normal: ${str} <br> String reversed: ${revStr}`;
                                 document.getElementById("alert").classList.remove("invisible");
                         
                             }
@@ -102,12 +112,30 @@
                     </pre>
                 </div>
                 <div class="col-lg-4">
+                    <br>
                     <h5>getString</h5>
-                    <p></p>
+                    <p>getString is the main function that is called on the button press
+                        it takes in the string input from the html document. Then calls all of the fuctions
+                        required to makes this app function.
+                    </p> <br><br><br><br><br><br><br>
+                    <h5>reverseStr</h5>
+                    <p>reverseStr takes in a string parameter and through a for loop reverses it into 
+                        a different string variable and returns that variable with the string reversed.
+                    </p><br><br><br>
+                    <h5>composeString</h5>
+                    <p>composeString removes spaces from the string parameter as this interferes with the ability to 
+                        check for palindromes.
+                    </p>
                     <h5>checkPal</h5>
-                    <p></p>
+                    <p>checkPal takes two string parameters, and compares them, if they are the same it returns true,
+                        if they are not then it returns false;
+                    </p><br><br><br><br><br>
                     <h5>displayMessage</h5>
-                    <p></p>
+                    <p>displayMessage takes two string parameter and a boolean parameter, using the boolean in an if
+                        statement, to then choose two different outcomes the true giving a green success box and message.
+                        The false giving a red failure box and message. Both showing the comparison between the forward
+                        and backwords strings.
+                    </p>
                 </div>
             </div>
         </div>
