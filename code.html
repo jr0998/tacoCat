@@ -55,17 +55,59 @@
             <div class="row row-cols-1 row-cols-lg-2 py-5 ">
                 <div class="col-lg-8">
                     <pre class="line-numbers"> <code class="language-javascript">
-                        //call hello world
-                        function helloWorld(){
-                         alert("Hello World");
+                        function getString() {
+                            document.getElementById("alert").classList.add("invisible");
+                        
+                            let str = document.getElementById("stringInput").value;
+                        
+                            str = checkPal(str);
+                        
+                            displayMessage(str);
+                        
+                        }
+                        
+                        function checkPal(str) {
+                            str = str.replace(/\s/g, '');
+                            return str;
+                        }
+                        
+                        function displayMessage(str) {
+                            let testStr = [];
+                            let check = true;
+                            for (let i = str.length - 1; i >= 0; i--) {
+                                testStr += str[i];
+                            }
+                        
+                            for (let i = 0; i < str.length; i++) {
+                                if (str[i].toLowerCase() != testStr[i].toLowerCase()) {
+                                    check = false;
+                                }
+                            }
+                            if (!check) {
+                                document.getElementById("alert").classList.remove("alert-success");
+                                document.getElementById("alert").classList.add("alert-danger");
+                                document.getElementById("statement").innerText = "Not Plaidrome";
+                                document.getElementById("msg").innerHTML = `String Normal: ${str}<br> String reversed: ${testStr}`;
+                                document.getElementById("alert").classList.remove("invisible");
+                            } else {
+                                document.getElementById("alert").classList.remove("alert-danger");
+                                document.getElementById("alert").classList.add("alert-success");
+                                document.getElementById("statement").innerText = "Plaidrome";
+                                document.getElementById("msg").innerHTML = `String Normal: ${str} <br> String reversed: ${testStr}`;
+                                document.getElementById("alert").classList.remove("invisible");
+                        
+                            }
                         }
                     </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The Code is structured in one function.</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with a message of "Hello World"</p>
+                    <h5>getString</h5>
+                    <p></p>
+                    <h5>checkPal</h5>
+                    <p></p>
+                    <h5>displayMessage</h5>
+                    <p></p>
                 </div>
             </div>
         </div>
